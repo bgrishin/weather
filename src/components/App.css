@@ -1,0 +1,8 @@
+.wrap {
+    height: 100%;
+    position: fixed;
+    width: 100%;
+    background: rgba(0,0,0,0.1);
+    backdrop-filter: blur(70px);
+    z-index: 1;
+}

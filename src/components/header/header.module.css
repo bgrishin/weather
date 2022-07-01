@@ -1,0 +1,22 @@
+.wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo {
+    margin: 15px 0;
+    display: flex;
+}
+
+.logo_svg {
+    height: 25px;
+    fill: #e0e0e0;
+}
+
+.logo h2 {
+    color: #e0e0e0;
+    font-size: 20px;
+    font-weight: 600;
+    margin-left: 4px;
+}

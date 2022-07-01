@@ -1,0 +1,94 @@
+.wrap {
+  display: flex;
+  height: 70vh;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.temperature_block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: fadeIn 1s forwards;
+}
+
+.faded {
+  transition: 0.3s;
+  opacity: 0.3;
+}
+
+.info_block {
+  margin: 20px 0;
+  display: flex;
+}
+
+.info_block p {
+  color: white;
+  font-size: 15px;
+}
+
+.info_block div {
+  margin: 0 20px;
+}
+
+.info_block p span {
+  color: gray;
+}
+
+.temperature {
+  font-weight: 700;
+  display: flex;
+  font-size: 65px;
+  color: white;
+}
+
+.status {
+  color: gray;
+}
+
+.icon {
+  height: 15px;
+  fill: gray;
+  transition: 0.3s;
+}
+
+.icon:hover {
+  fill: white;
+  cursor: pointer;
+}
+
+.geo {
+  color: gray;
+  margin: 10px 0;
+}
+
+.loader {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: radial-gradient(farthest-side, #666666 95%, #0000) 50% 1.1px/13.4px
+      13.4px no-repeat,
+    radial-gradient(
+      farthest-side,
+      #0000 calc(100% - 15.7px),
+      rgba(102, 102, 102, 0.1) 0
+    );
+  animation: loader-animation 1s infinite linear;
+}
+
+@keyframes loader-animation {
+  to {
+    transform: rotate(1turn);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
