@@ -34,33 +34,26 @@ export const Content = () => {
   async function getData(lat, lon) {
     try {
       const data = await fetch(
-          `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=0df5d2477ef429b2414a9e052a0040f9`
+        `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=0df5d2477ef429b2414a9e052a0040f9`
       ).then((res) => res.json());
       setFaded(false);
       setData(data);
     } catch (e) {
-      alert("An error occurred, please try again later.")
+      alert("An error occurred, please try again later.");
     }
   }
 
-  async function onNoGeo() {
-    alert("Please allow geolocation in your browser.");
-    await getData(51, 0);
-  }
-
-  function updateData() {
+  async function updateData() {
     setFaded(true);
-    navigator.geolocation
-      ? navigator.geolocation.getCurrentPosition(
-          async (pos) =>
-            await getData(pos.coords.latitude, pos.coords.longitude)
-        )
-      : onNoGeo();
+    navigator.geolocation.getCurrentPosition(
+      async (pos) => await getData(pos.coords.latitude, pos.coords.longitude),
+      async () => await getData(51, 0)
+    );
   }
 
   async function search() {
     const city = prompt("Enter your city name (you can write on any language)");
-    if(!city) return
+    if (!city) return;
     setFaded(true);
     const data = await fetch(
       `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=0df5d2477ef429b2414a9e052a0040f9&units=metric`
@@ -74,7 +67,12 @@ export const Content = () => {
     }
   }
 
-  useEffect(() => updateData(), []);
+  useEffect(() => {
+    async function use() {
+      await updateData();
+    }
+    use();
+  }, []);
   return (
     <div className={`${styles.wrap} ${faded && styles.faded}`}>
       {data?.main ? (
